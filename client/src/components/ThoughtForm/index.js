@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-const ThoughtForm = () => {
+const ThoughtForm = ({update, setUpdate}) => {
   const [formState, setFormState] = useState({
     username: "",
     thought: "",
@@ -52,7 +52,8 @@ const ThoughtForm = () => {
         body: JSON.stringify(formState),
       });
       const data = await res.json();
-      console.log(data);
+      setUpdate(update+1)
+      console.log(data,update);
     };
     postData();
     // clear form value
