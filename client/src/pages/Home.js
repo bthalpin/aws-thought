@@ -5,6 +5,7 @@ import ThoughtForm from '../components/ThoughtForm';
 const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [thoughts, setThoughts] = useState([]);
+  const [update,setUpdate] = useState(0);
   
   useEffect(() => {
     const fetchData = async () => {
@@ -21,13 +22,13 @@ const Home = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [update]);
 
   return (
     <main>
       <div className="flex-row justify-space-between">
         <div className="col-12 mb-3">
-          <ThoughtForm />
+          <ThoughtForm update={update} setUpdate={setUpdate} />
         </div>
         <div className={`col-12 mb-3 `}>
           {!isLoaded ? (
